@@ -1,0 +1,4 @@
+{
+    "train_path" : "../datasets/train.csv",
+    "test_path" : "../datastes/test.csv"
+}
