@@ -4,9 +4,13 @@
 # Last Modified: 04/17/23
 
 import pandas as pd
+import nlkt
 # import numpy as np
 import string
+import re
 
+from gensim.models import Word2Vec
+from nltk.corpus import stopwords
 from utils import *
 
 class CleanText:
@@ -40,3 +44,23 @@ class CleanText:
 # Testing the script here
 test = CleanText()
 test.clean()
+
+
+# preprocessing // Ref: https://www.youtube.com/watch?v=Otde6VGvhWM&ab_channel=KrishNaik
+# paragraph = "bruh1"
+# text = re.sub(r'\[[0-9]*\]', ' ', paragraph)
+# text = re.sub(r'\s+', ' ', text)
+# text = text.lower()
+# text = re.sub(r'\d', '', text)
+# text = re.sub (r'\s+', '', text)
+
+# sentences = nltk.sent_tokenize(text)
+# sentences = [nltk.work_tokenize(sentence) for sentence in sentences]
+
+# for i in range(len(sentences)):
+#   sentences[i] = [word for word in sentences[i] if not in stopwords.words('english')]
+
+# model = Word2Vec(sentences, min_count=1)
+# words = model.wv.vocab
+
+# similar = model.wv.most_similar('Something')
