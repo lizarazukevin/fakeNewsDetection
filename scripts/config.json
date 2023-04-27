@@ -1,4 +1,5 @@
 {
     "train_path" : "../datasets/train.csv",
-    "test_path" : "../datastes/test.csv"
+    "test_path" : "../datastes/test.csv",
+    "bruh_path" : "../datasets/bruh.csv"
 }
