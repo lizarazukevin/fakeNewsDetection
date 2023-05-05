@@ -1,14 +1,19 @@
 # ECE4424 Fake News Detection Project
 # Topic - Utils
-# Authors - Kevin Lizarazu
-# Last Modified: 04/17/23
+# Authors - Kevin Lizarazu, Luc Phan
+# Last Modified: 05/04/23
 
 import json
 import csv
+import nltk
 import pandas as pd
 import numpy as np
 import string
 import chardet
+
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from collections import defaultdict
 from pandas import *
 
 
@@ -27,10 +32,15 @@ def loadConfig(path: str) -> dict:
 def loadData(file_path: str) -> DataFrame:
 
     # Stores the contents of csv in a DataFrame
-    readdata = pd.read_csv(file_path)
+    read_data = pd.read_csv(file_path)
 
+    return read_data
+
+# Cleans the data using various techniques such as lowercasing, alpha check, and lemmatization
+def cleanData_1(data: DataFrame) -> DataFrame:
+    
     # Lowercase the data
-    cleandata = readdata.apply(lambda x: x.astype(str).str.lower())
+    cleandata = data.apply(lambda x: x.astype(str).str.lower())
 
     # Remove punctuation
     translator = str.maketrans('', '', string.punctuation)
@@ -41,8 +51,34 @@ def loadData(file_path: str) -> DataFrame:
     return cleandata
 
 
+# Cleans the data further by implementing filters for stop words and lamination
+def cleanData_2(data_f: DataFrame) -> DataFrame:
+    stop_words = set(stopwords.words('english'))
+    data_f['text'] = data_f['text'].apply(lambda x: [word for word in nltk.word_tokenize(x.lower()) if word.isalpha() and word not in stop_words])
+
+    lemmatizer = WordNetLemmatizer()
+    data_f['text'] = data_f['text'].apply(lambda x: [lemmatizer.lemmatize(word) for word in x])
+
+    return data_f
+
+# Attempt at making a class for Naive 
+class NaiveBayesPredictor:
+
+    def __init__(self, config_path="./config.json"):
+        self.env_config = loadConfig(config_path)
+        self.model = defaultdict()
+        # self.word_probs = defaultdict(list)
+        # self.class_probs = defaultdict(list)
+        # self.raw_train
+
+        print(self.env_config)
+    
+    # here we would either need to read the path to the clean data or in data extraction have it ready for us
+    def train(self, params=None,):
+        print("Training!")
+
 ##############################################################
-# Testing Nonsense
+# Testing
 ##############################################################
 
 # # Loads the data from a data path and returns as a dict
