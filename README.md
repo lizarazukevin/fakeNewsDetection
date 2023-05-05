@@ -38,6 +38,12 @@ This project contains util python files and jupyter notebooks that can be easily
 - svm.ipynb
 It is expected that all packages in the jupyter notebooks be installed on the machine. This includes pandas, numpy, and several others.
 
+Make sure that your environment has the correct dependencies by installing everything in the <i>requirements.txt</i>
+```
+pip install -r requirements.txt
+```
+
+
 All other configurables like paths can be found in <i>config.json</i>
 
 
