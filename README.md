@@ -30,11 +30,13 @@ Provided by the course on Canvas, the train (39919 entries) and test(5000) datas
 - Date
 
 Labels were either real or fake, corresponding to if the news articles were honest and valid.
+It is assumed that the training and testing files are named "train.csv" and "test.csv" respectively.
 
 ## Build and Run
 This project contains util python files and jupyter notebooks that can be easily run, to see our results check out the following notebooks and run their cells:
 - naiveBayes.ipynb
 - svm.ipynb
+It is expected that all packages in the jupyter notebooks be installed on the machine. This includes pandas, numpy, and several others.
 
 All other configurables like paths can be found in <i>config.json</i>
 
